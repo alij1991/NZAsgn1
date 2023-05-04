@@ -53,3 +53,48 @@ I2C initialization first steps:
 ![C4F8B65F-F2DA-4215-BCCA-C973DFD8A3C5_1_201_a](https://user-images.githubusercontent.com/29590379/236308253-d3a1d86f-bc68-4eea-9bbd-d49ad3c7b819.jpeg)
 
 - Implement separate I2C and SPI read/write functions and call them based on the active communication protocol.
+
+# Steps for the firmware to switch between I2C and SPI protocols
+
+# Start: 
+Initialize the MCU, configure the GPIOs, and set up the peripherals.
+
+Detect Device: Check the connected slave device type to determine the protocol to use (I2C or SPI).
+
+Configure SERCOM: Based on the detected device type, configure the SERCOM module for either I2C or SPI mode.
+
+1. If the detected device is an I2C device, go to state I2C Mode.
+
+2. If the detected device is an SPI device, go to state SPI Mode.
+
+I2C Mode:
+
+1. Perform I2C operations (read/write) as required.
+
+2. Continuously monitor for a change in the connected device type.
+
+3. If a change in device type is detected, go to state Configure SERCOM.
+
+SPI Mode:
+
+1. Perform SPI operations (read/write) as required.
+
+2. Continuously monitor for a change in the connected device type.
+
+3. If a change in device type is detected, go to state Configure SERCOM.
+
+# Check the connected slave device type to determine the protocol to use
+
+To check the connected slave device type to determine the protocol to use (I2C or SPI), you can implement one of the following methods:
+
+1. Use an additional GPIO for device type indication: 
+
+Connect an extra GPIO line to the slave device, which indicates the type of protocol the device uses. Set this line to HIGH for I2C devices and LOW for SPI devices (or vice versa, based on your preference). In the firmware, read the state of this GPIO line to determine the device type.
+
+2. Use a predefined timing or connection sequence: 
+
+If you can control the connection sequence or timing of the devices, you can use this information to determine the device type. For example, if you connect an I2C device first and then an SPI device, you can use this sequence to determine which protocol to use. Alternatively, you can use a timer to switch between the two protocols at predefined intervals.
+
+3. Manual user input: 
+
+If the system allows for user interaction, you can prompt the user to select the protocol type when a new device is connected. The user can input the device type through a button, switch, or software interface.
