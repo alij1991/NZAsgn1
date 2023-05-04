@@ -34,6 +34,22 @@ By referring to the SAM-D21-DA1 Family datasheet, we can utilize the SERCOM (Ser
 
 ### Firmware
 
-- Implement a function to switch between I2C and SPI mode in the SERCOM module during runtime. The function should reconfigure the SERCOM module, pins, and peripherals accordingly.
-- Implement a GPIO-based SS control for SPI communication, so you can use the same PA10 pin for MISO and SS functionality.
+- Implement a function to switch between I2C and SPI mode in the SERCOM module during runtime. The function should reconfigure the SERCOM module, pins, and peripherals accordingly. The following images from datasheet show some of the initialization steps and changes which need to be done.
+
+Mode select for SERCOM module for switching between SPI and I2C:
+
+![6CAFB314-AD33-4A6D-AA7F-F099C8BFFCF0_1_201_a](https://user-images.githubusercontent.com/29590379/236302241-6f71322c-65ba-46f2-8dc7-1c7f71d902b5.jpeg)
+
+SPI initialization first steps:
+
+![9CBA7762-86C0-45D4-B5F6-CC4AB89BF940_1_201_a](https://user-images.githubusercontent.com/29590379/236306823-f49856e3-7cfb-467f-916b-00ff71338d6e.jpeg)
+
+![41E744E6-5BE7-44B3-A483-FABF375251B7_1_105_c](https://user-images.githubusercontent.com/29590379/236303130-ff4255c4-6b28-44d1-8961-124e38a4f8af.jpeg)
+
+I2C initialization first steps:
+
+![FDFDB77B-0108-4F68-8BCA-50CD238229E7_1_201_a](https://user-images.githubusercontent.com/29590379/236307742-4a638694-96ce-4eda-bb6b-d6269566f853.jpeg)
+
+![C4F8B65F-F2DA-4215-BCCA-C973DFD8A3C5_1_201_a](https://user-images.githubusercontent.com/29590379/236308253-d3a1d86f-bc68-4eea-9bbd-d49ad3c7b819.jpeg)
+
 - Implement separate I2C and SPI read/write functions and call them based on the active communication protocol.
