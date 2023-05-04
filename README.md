@@ -30,11 +30,10 @@ Based on Table 27-7, we can use SERCOM0 and its alternate function (ALT C) to co
 
 ### Hardware
 
-- Since the MCU supports both I2C and SPI in the same SERCOM module, no additional hardware features are required.
+- No additional hardware features are required.
 
 ### Firmware
 
-- Implement a configuration function to switch between I2C and SPI mode in the SERCOM module during runtime. The function should reconfigure the SERCOM module, pins, and peripherals accordingly.
+- Implement a function to switch between I2C and SPI mode in the SERCOM module during runtime. The function should reconfigure the SERCOM module, pins, and peripherals accordingly.
 - Implement a GPIO-based SS control for SPI communication, so you can use the same PA10 pin for MISO and SS functionality.
-- Add logic to detect the connected slave device type and configure the SERCOM module based on the detected protocol (I2C or SPI) during runtime.
 - Implement separate I2C and SPI read/write functions and call them based on the active communication protocol.
