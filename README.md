@@ -54,12 +54,12 @@ I2C initialization first steps:
 
 - Implement separate I2C and SPI read/write functions and call them based on the active communication protocol.
 
-# Steps for the firmware to switch between I2C and SPI protocols
+## Steps for the firmware to switch between I2C and SPI protocols
 
-# Start: 
+### Start: 
 Initialize the MCU, configure the GPIOs, and set up the peripherals.
 
-Detect Device: Check the connected slave device type to determine the protocol to use (I2C or SPI).
+Detect Device: Check the connected slave device type to determine the protocol to use (I2C or SPI). (explained in the following section)
 
 Configure SERCOM: Based on the detected device type, configure the SERCOM module for either I2C or SPI mode.
 
@@ -83,7 +83,7 @@ SPI Mode:
 
 3. If a change in device type is detected, go to state Configure SERCOM.
 
-# Check the connected slave device type to determine the protocol to use
+### Check the connected slave device type to determine the protocol to use
 
 To check the connected slave device type to determine the protocol to use (I2C or SPI), you can implement one of the following methods:
 
